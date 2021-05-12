@@ -3,13 +3,11 @@ class ApplicationController < ActionController::Base
 
 
   def after_sign_in_path_for(resource)
-    if current_user
-      flash[:notice] = "ログイン成功"
-      user_path(current_user.id)
-    else
-      flash[:notice] = "新規登録"
-      user_path(current_user.id)
-    end
+    user_path(current_user.id)
+  end
+
+  def after_sign_up_for(resource)
+    user_path(current_user.id)
   end
 
 
