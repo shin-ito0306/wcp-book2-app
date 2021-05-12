@@ -21,6 +21,6 @@
 <%= @book_show.user.name %>
 <%= @book_show.title %>
 <%= @book_show.body %>
-
+< if 
 <%= link_to "edit", edit_book_path(@book_show.id) %>
 <%= link_to "destroy", book_path(@book_show.id), method: :delete, data: { confirm: "本当に削除しますか。" } %>
