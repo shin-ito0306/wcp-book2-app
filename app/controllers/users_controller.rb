@@ -6,9 +6,8 @@ class UsersController < ApplicationController
     @book = Book.new
   end
 
-  def create
 
-  end
+
 
   def show
     @user = User.find(current_user.id)
