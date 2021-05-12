@@ -17,10 +17,12 @@
     <%= f.submit "投稿" %>
 <% end %>
 
+<h1>Book detail</h1>
 <%= attachment_image_tag @book_show.user, :profile_image, :fill, 60, 60, format: "jpeg" %>
 <%= @book_show.user.name %>
 <%= @book_show.title %>
 <%= @book_show.body %>
-< if 
-<%= link_to "edit", edit_book_path(@book_show.id) %>
-<%= link_to "destroy", book_path(@book_show.id), method: :delete, data: { confirm: "本当に削除しますか。" } %>
+<% if @book_show.user_id == current_user.id %>
+    <%= link_to "edit", edit_book_path(@book_show.id) %>
+    <%= link_to "destroy", book_path(@book_show.id), method: :delete, data: { confirm: "本当に削除しますか。" } %>
+<% end %>
