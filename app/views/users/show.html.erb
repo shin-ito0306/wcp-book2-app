@@ -19,7 +19,7 @@
 
   <h1>Books</h1>
   <% @user.books.each do |book| %>
-    <%= attachment_image_tag book.user, :profile_image %>
+    <%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, format: "jpeg" %>
     <%=link_to "#{book.title}", book_path(book.id) %>
     <%= book.body %>
   <% end %>
