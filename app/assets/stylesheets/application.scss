@@ -16,4 +16,24 @@
  @import 'bootstrap';
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
- 
+
+
+ * {
+  padding: 0;
+  margin: 0;
+  box-siging: border-box;
+ }
+
+ nav {
+  background-color: #343a40;
+ }
+
+ .container {
+  display: flex;
+  justfy-content: space-between;
+ }
+
+ .nav-item {
+  padding: 8px;
+ }
+
