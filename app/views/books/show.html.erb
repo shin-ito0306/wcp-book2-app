@@ -1,21 +1,4 @@
-<h1>User info</h1>
-<p>name</p>
-<%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg' %>
-<%= @user.name%>
-<p>introduction</p>
-<%= @user.introduction %>
-<%= link_to "edit", edit_user_path(current_user.id) %>
-
-<h1>New book</h1>
-<%= form_with model:@book, local: true do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-
-    <%= f.label :opinion %>
-    <%= f.text_area :body %>
-
-    <%= f.submit "投稿" %>
-<% end %>
+<%= render 'users/sidebar', user: @user, book: @book %>
 
 <h1>Book detail</h1>
 <%= attachment_image_tag @book_show.user, :profile_image, :fill, 60, 60, format: "jpeg" %>
