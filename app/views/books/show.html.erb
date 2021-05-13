@@ -1,7 +1,7 @@
 <%= render 'users/sidebar', user: @user, book: @book %>
 
 <h1>Book detail</h1>
-<%= attachment_image_tag @book_show.user, :profile_image, :fill, 60, 60, format: "jpeg" %>
+<%= attachment_image_tag @book_show.user, :profile_image, :fill, 60, 60, format: "jpeg", fallback: "no_image.jpg" %>
 <%= @book_show.user.name %>
 <%= @book_show.title %>
 <%= @book_show.body %>
