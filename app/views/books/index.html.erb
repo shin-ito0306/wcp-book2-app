@@ -1,3 +1,10 @@
+<% if @book.errors.any? %>
+  <p><%= @book.errors.full_messages.count %>件のerror</p>
+  <% @book.errors.full_messages.each do |message| %>
+    <%= message %>
+  <% end %>
+<% end %>
+
 <h1>User info</h1>
   <p>name</p>
   <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, format: 'jpeg' %>

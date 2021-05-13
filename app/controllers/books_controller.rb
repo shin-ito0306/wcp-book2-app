@@ -12,12 +12,14 @@ class BooksController < ApplicationController
   end
 
   def create
-    book = current_user.books.new(book_params)
-    if book.save
+    @book = current_user.books.new(book_params)
+    if @book.save
       redirect_to book_path(book.id)
       flash[:notice] = "success"
     else
-      render books_path
+      @books = Book.all
+      @user = User.find(current_user.id)
+      render :index
       flash[:notice] = "error"
     end
   end
@@ -38,8 +40,7 @@ class BooksController < ApplicationController
       redirect_to book_path(@book.id)
       flash[:notice] = "success"
     else
-      render edit_book_path(@book.id)
-      flash[:notice] = "error"
+      render :edit
     end
   end
 

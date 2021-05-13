@@ -1,4 +1,10 @@
 <%= flash[:notice] %>
+<% if @user.errors.any? %>
+  <p><%= @user.errors.full_messages.count %>件のerror</p>
+  <% @user.errors.full_messages.each do |message| %>
+    <p><%= message %></p>
+  <% end %>
+<% end %>
 <h1>User info</h1>
 <%= form_with model:@user, local:true do |f| %>
   <%= f.label :Name %>
