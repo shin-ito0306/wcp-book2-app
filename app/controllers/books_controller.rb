@@ -15,7 +15,7 @@ class BooksController < ApplicationController
     @book = current_user.books.new(book_params)
     if @book.save
       redirect_to book_path(@book.id)
-      flash[:notice] = "success"
+      flash[:notice] = "successfully"
     else
       @books = Book.all
       @user = User.find(current_user.id)
@@ -26,7 +26,7 @@ class BooksController < ApplicationController
 
   def show
     @book_show = Book.find(params[:id])
-    @user = User.find(current_user.id)
+    @user = User.find(@book_show.user.id)
     @book = Book.new
   end
 
@@ -43,7 +43,7 @@ class BooksController < ApplicationController
     @book = Book.find(params[:id])
     if  @book.update(book_params)
       redirect_to book_path(@book.id)
-      flash[:notice] = "success"
+      flash[:notice] = "successfully"
     else
       render :edit
     end
