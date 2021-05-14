@@ -20,7 +20,7 @@ class BooksController < ApplicationController
       @books = Book.all
       @user = User.find(current_user.id)
       render :index
-      flash[:notice] = "error"
+
     end
   end
 
