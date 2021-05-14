@@ -1,20 +1,48 @@
 <%= flash[:notice] %>
-<% if @user.errors.any? %>
-  <p><%= @user.errors.full_messages.count %>件のerror</p>
-  <% @user.errors.full_messages.each do |message| %>
-    <p><%= message %></p>
-  <% end %>
-<% end %>
-<h1>User info</h1>
-<%= form_with model:@user, local:true do |f| %>
-  <%= f.label :Name %>
-  <%= f.text_field :name %>
 
-  <%= f.label :Image %>
-  <%= f.attachment_field :profile_image %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>User info</h2>
+      <div id="error_explanation">
+        <% if @user.errors.any? %>
+          <p><%= @user.errors.full_messages.count %>件のerror</p>
+          <% @user.errors.full_messages.each do |message| %>
+            <p><%= message %></p>
+          <% end %>
+        <% end %>
+      </div>
+      <%= form_with model:@user, local:true do |f| %>
+        <div class="form-group">
+          <%= f.label :Name %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :Image %>
+          <%= f.attachment_field :profile_image %>
+        </div>
+        <div class="form-group">
+          <%= f.label :Introduction %>
+          <%= f.text_area :introduction, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Update User", class:"btn btn-secondary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-  <%= f.label :Introduction %>
-  <%= f.text_area :introduction %>
 
-  <%= f.submit "Update User" %>
-<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
