@@ -9,8 +9,13 @@ class BookCommentsController < ApplicationController
 
   def destroy
     book = Book.find(params[:book_id])
-    BookComment.find_by(id: params[:id], book_id: params[:book_id]).destroy
-    redirect_to book_path(book.id)
+    book_destroy = BookComment.find_by(id: params[:id], book_id: params[:book_id])
+    if book_destroy.user_id == current_user.id
+      book_destroy.destroy
+      redirect_to book_path(book.id)
+   else
+     render book_path(book.id)
+   end
   end
 
   private
