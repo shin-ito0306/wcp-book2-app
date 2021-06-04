@@ -18,6 +18,14 @@ class User < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true, length: { minimum: 2, maximum: 20 }
   validates :introduction, length: { maximum: 50 }
+  
+  def self.looks(matches, words)
+    if matches == "perfect_match"
+      @user = User.where("name LIKE ?", "#{words}")
+    else
+      @user = User.where("name LIKE ?", "%#{words}%")
+    end
+  end
 
   def follow_by?(user)
     followed_do.find_by(follower_id: user.id).present?
