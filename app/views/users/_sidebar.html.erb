@@ -11,6 +11,14 @@
         <th>introduction</th>
         <th><%= user.introduction %></th>
       </tr>
+      <tr>
+        <th>follows</th>
+        <th><%= link_to "#{user.follower_do.count}", users_path %></th>
+      </tr>
+      <tr>
+        <th>followers</th>
+        <th><%= link_to "#{user.followed_do.count}", users_path %></th>
+      </tr>
     </tbody>
   </table>
   <div class="row">
