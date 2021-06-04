@@ -6,10 +6,14 @@ class Book < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 200 }
-  
+
   def self.looks(matches, words)
     if matches == "perfect_match"
       @book = Book.where("title LIKE ?", "#{words}")
+    elsif matches == "left_match"
+      @book = Book.where("title LIKE ?", "#{words}%")
+    elsif matches == "right_match"
+      @book = Book.where("title LIKE ?", "%#{words}")
     else
       @book = Book.where("title LIKE ?", "%#{words}%")
     end
