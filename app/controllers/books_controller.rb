@@ -3,7 +3,9 @@ class BooksController < ApplicationController
   def index
     @user = User.find(current_user.id)
     @book = Book.new
-    @books = Book.all
+    from  = Time.current.at_beginning_of_day
+    to = (from + 6.day).at_end_of_day
+    @books = Book.left_joins(:favorites).sort {|a, b| b.favorites.where(favorites: {created_at: [from...to]}).size <=> a.favorites.where(favorites: {created_at: [from...to]}).size }
   end
 
   def new
