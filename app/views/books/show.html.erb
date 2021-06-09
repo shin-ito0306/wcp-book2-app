@@ -26,6 +26,7 @@
                             <td><%= link_to "Destroy", book_path(@book_show.id), method: :delete, data: { confirm: "本当に削除しますか。" }, class: "btn btn-sm btn-danger" %></td>
                         <% end %>
                         <td>コメント数：<%= @book_show.book_comments.count %></td>
+                        <td>閲覧数：<%= @book_show.impressionist_count %></td>
                     </tr>
                 </tbody>
             </table>

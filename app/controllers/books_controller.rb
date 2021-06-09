@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  impressionist :actions=> [:show]
 
   def index
     @user = User.find(current_user.id)
@@ -30,6 +31,7 @@ class BooksController < ApplicationController
     @user = User.find(@book_show.user.id)
     @book = Book.new
     @book_comment = BookComment.new
+
   end
 
   def edit
