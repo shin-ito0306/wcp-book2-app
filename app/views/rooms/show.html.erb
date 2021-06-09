@@ -14,4 +14,9 @@
       <% end %>
     <% end %>
   <% end %>
+  <%= form_with model:@message do |f| %>
+    <%= f.text_field :text placeholder: "メッセージを入力してください" %>
+    <%= f.hidden_field :room_id, value: @room.id %>
+    <%= f.submit "送信", class:"btn btn-success" %>
+  <% end %>
 </div>
