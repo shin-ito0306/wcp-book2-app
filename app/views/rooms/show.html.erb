@@ -5,17 +5,17 @@
     <% @messages.each do |message| %>
       <% if message.room.user_id == current_user.id %>
         <div class="current_user_message">
-          <%= message %>
+          <%= message.text %>
         </div>
       <% else %>
         <div class="you_message">
-          <%= message %>
+          <%= message.text %>
         </div>
       <% end %>
     <% end %>
   <% end %>
-  <%= form_with model:@message do |f| %>
-    <%= f.text_field :text placeholder: "メッセージを入力してください" %>
+  <%= form_with model:@message, local:true do |f| %>
+    <%= f.text_field :text %>
     <%= f.hidden_field :room_id, value: @room.id %>
     <%= f.submit "送信", class:"btn btn-success" %>
   <% end %>

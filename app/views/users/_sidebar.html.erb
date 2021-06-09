@@ -31,8 +31,8 @@
               <%= link_to "チャットへ", room_path(roomid), class: "btn-btn-primary btn-lg" %>
             </p>
           <% else %>
-            <%= form_with model:room do |f| %>
-              <%= fields_for entry do |e| %>
+            <%= form_with model:room, local:true do |f| %>
+              <%= fields_for entry, local:true do |e| %>
                 <%= e.hidden_field :user_id, value: user.id %>
               <% end %>
               <%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"%>

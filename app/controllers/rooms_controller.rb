@@ -26,6 +26,8 @@ class RoomsController < ApplicationController
 
   private
     def entry_params
-      params.require(:entry).permit(:room_id, :user_id).marge(room_id: @room.id)
+      params.require(:entry).permit(:room_id, :user_id).merge(room_id: @room.id)
     end
+
+
 end
