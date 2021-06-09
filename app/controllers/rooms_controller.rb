@@ -14,6 +14,11 @@ class RoomsController < ApplicationController
       @messages = @room.messages
       @message = Message.new
       @entries = @room.entries
+      @entries.each do |entry|
+        if entry != current_user.id
+          @user = User.find_by(id: entry.id)
+        end
+      end
     else
       redirect_back(fallback_location: root_path)
     end
